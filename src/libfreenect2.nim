@@ -1,4 +1,4 @@
-## *io-freenect2* - Nim bindings for libfreenect, the the cross-platform user
+## *io-freenect2* - Nim bindings for libfreenect2, the the cross-platform user
 ## library for Kinect for Windows v2.
 ##
 ## This file is part of the `Nim I/O <http://nimio.us>`_ package collection.
@@ -128,7 +128,7 @@ type
 
 
 proc freenect2Init*(ctx: ptr ptr Freenect2Context;
-  usbCtx: ptr Freenect2UsbContext): cint
+  usbCtx: Freenect2UsbContext): cint
   {.cdecl, dynlib: dllname, importc: "freenect2_init".}
   ## Initialize a freenect2 context and do any setup required for platform
   ## specific USB libraries.

@@ -14,7 +14,8 @@ cross-platform driver for Kinect for Windows v2 devices that currently supports
 transfer of RGB, IR and depth images.
 
 Older Kinect devices are not supported. For Kinect for Windows v1 and Kinect for
-Xbox 360 use [io-freenect](https://github.com/nimious/io-freenect) instead.
+Xbox 360 use the bindings in [io-freenect](https://github.com/nimious/io-freenect)
+for *libfreenect* instead.
 
 
 ## Supported Platforms
@@ -61,7 +62,7 @@ import libfreenect2
 Please [file an issue](https://github.com/nimious/io-freenect2/issues), submit a
 [pull request](https://github.com/nimious/io-freenect2/pulls?q=is%3Aopen+is%3Apr)
 or email us at info@nimio.us if this package is out of date or contains bugs.
-For all other issues related to USB devices visit the libusb web site below.
+For all other issues related to Kinect devices visit the OpenKinect Wiki below.
 
 
 ## References
