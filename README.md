@@ -1,6 +1,6 @@
 # io-myo
 
-Nim bindings for libfreenect, the the cross-platform user library for Kinect for
+Nim bindings for libfreenect, the the cross-platform library for Kinect for
 Windows v2.
 
 ![io-freenect2 Logo](logo.png)

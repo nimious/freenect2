@@ -1,4 +1,4 @@
-## *io-freenect2* - Nim bindings for libfreenect, the the cross-platform user
+## *io-freenect2* - Nim bindings for libfreenect, the the cross-platform
 ## library for Kinect for Windows v2.
 ##
 ## This file is part of the `Nim I/O <http://nimio.us>`_ package collection.

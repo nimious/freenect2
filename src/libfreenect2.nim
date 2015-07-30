@@ -1,4 +1,4 @@
-## *io-freenect2* - Nim bindings for libfreenect2, the the cross-platform user
+## *io-freenect2* - Nim bindings for libfreenect2, the the cross-platform
 ## library for Kinect for Windows v2.
 ##
 ## This file is part of the `Nim I/O <http://nimio.us>`_ package collection.
@@ -24,7 +24,7 @@ type
     ## open a particular device by serial rather than depending on index. This
     ## is most useful if you have more than one Kinect.
     cameraSerial*: cstring ## Serial number of this device's camera subdevice.
-  
+
 
 type
   Freenect2Resolution* {.pure, size: sizeof(cint).} = enum ## \
@@ -84,7 +84,7 @@ type
     ## well as the total number of bytes needed to hold a single frame.
     reserved*: cuint ## Unique ID used internally. The meaning of values may
       ## change without notice. Don't touch or depend on the contents of this
-      ## field. We mean it. 
+      ## field. We mean it.
     resolution*: Freenect2Resolution ## Resolution that this object describes,
       ## should you want to find it again with `freenect2Find*FrameMode()`.
     format*: Freenect2FrameModeFormat ## Format data.
@@ -100,10 +100,10 @@ type
     framerate*: cchar ## Approximate expected frame rate, in Hz.
     isValid*: cchar ## If 0, this Freenect2FrameMode is invalid and does not
       ## describe a supported mode.  Otherwise, the frame_mode is valid.
-  
+
 
   Freenect2Context* = object
-    ## Holds information about the usb context. 
+    ## Holds information about the usb context.
 
 
   Freenect2Device* = object
@@ -124,7 +124,7 @@ type
     info, ## Log for normal messages.
     debug, ## Log for useful development messages.
     spew, ## Log for slightly less useful messages.
-    flood ## Log EVERYTHING. May slow performance. 
+    flood ## Log EVERYTHING. May slow performance.
 
 
 proc freenect2Init*(ctx: ptr ptr Freenect2Context;
@@ -223,7 +223,7 @@ proc freenect2OpenDevice*(ctx: ptr Freenect2Context;
   ## Bus resets may cause indexes to shift.
 
 
-proc freenect2OpenDeviceByCameraSerial*(ctx: ptr Freenect2Context; 
+proc freenect2OpenDeviceByCameraSerial*(ctx: ptr Freenect2Context;
   dev: ptr ptr Freenect2Device; cameraSerial: cstring): cint
   {.cdecl, dynlib: dllname, importc: "freenect2OpenDevice_by_camera_serial".}
   ## Open a kinect device (via a context) associated with a particular camera
@@ -269,7 +269,7 @@ type
     ## Typedef for video image received event callbacks.
 
 
-proc freenect2SetDepthCallback*(dev: ptr Freenect2Device; 
+proc freenect2SetDepthCallback*(dev: ptr Freenect2Device;
   cb: Freenect2DepthCb; user: pointer)
   {.cdecl, dynlib: dllname, importc: "freenect2_set_depth_callback".}
   ## Set callback for depth information received event.
@@ -282,7 +282,7 @@ proc freenect2SetDepthCallback*(dev: ptr Freenect2Device;
   ##   Pointer to user data
 
 
-proc freenect2SetIrCallback*(dev: ptr Freenect2Device; cb: Freenect2IrCb; 
+proc freenect2SetIrCallback*(dev: ptr Freenect2Device; cb: Freenect2IrCb;
   user: pointer)
   {.cdecl, dynlib: dllname, importc: "freenect2_set_ir_callback".}
   ## Set callback for ir information received event.
@@ -295,7 +295,7 @@ proc freenect2SetIrCallback*(dev: ptr Freenect2Device; cb: Freenect2IrCb;
   ##   Pointer to user data
 
 
-proc freenect2SetVideoCallback*(dev: ptr Freenect2Device; 
+proc freenect2SetVideoCallback*(dev: ptr Freenect2Device;
                                    cb: Freenect2VideoCb; user: pointer)
   {.cdecl, dynlib: dllname, importc: "freenect2_set_video_callback".}
   ## Set callback for video information received event.
@@ -339,7 +339,7 @@ proc freenect2StartVideo*(dev: ptr Freenect2Device): cint
   ## result
   ##   - `0` on success
   ##    - `< 0` on error
- 
+
 
 proc freenect2StopDepth*(dev: ptr Freenect2Device): cint
   {.cdecl, dynlib: dllname, importc: "freenect2_stop_depth".}
@@ -486,7 +486,7 @@ proc freenect2FindIrMode*(res: Freenect2Resolution; fmt: Freenect2IrFormat):
   ##   - An invalid Freenect2FrameMode otherwise
 
 
-proc freenect2SetIrMode*(dev: ptr Freenect2Device; 
+proc freenect2SetIrMode*(dev: ptr Freenect2Device;
                             mode: Freenect2FrameMode): cint
   {.cdecl, dynlib: dllname, importc: "freenect2_set_ir_mode".}
   ## Sets the current ir mode for the specified device.
@@ -551,7 +551,7 @@ proc freenect2FindDepthMode*(res: Freenect2Resolution;
   ##     valid mode exists
   ##   - An invalid Freenect2FrameMode otherwise
 
-  
+
 proc freenect2SetDepthMode*(dev: ptr Freenect2Device;
   mode: Freenect2FrameMode): cint
   {.cdecl, dynlib: dllname, importc: "freenect2_set_depth_mode".}
@@ -568,7 +568,7 @@ proc freenect2SetDepthMode*(dev: ptr Freenect2Device;
   ## The mode cannot be changed while streaming is active.
 
 
-proc freenect2SetFlag*(dev: ptr Freenect2Device; flag: Freenect2Flag; 
+proc freenect2SetFlag*(dev: ptr Freenect2Device; flag: Freenect2Flag;
   value: Freenect2FlagValue): cint
   {.cdecl, dynlib: dllname, importc: "freenect2_set_flag".}
   ## Enable or disable the specified flag.
