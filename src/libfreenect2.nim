@@ -27,7 +27,7 @@ type
 
 
 type
-  Freenect2Resolution* {.pure, size: sizeof(cint).} = enum ## \
+  Freenect2Resolution* {.pure, size: sizeof(cint).} = enum
     ## Enumeration of available resolutions.
     ##
     ## Not all available resolutions are actually supported for all video
@@ -36,34 +36,36 @@ type
     res1920x1080 = 1
 
 
-  Freenect2VideoFormat* {.pure, size: sizeof(cint).} = enum ## \
+  Freenect2VideoFormat* {.pure, size: sizeof(cint).} = enum
     ## Enumeration of video frame formats.
-    rgb = 0  ## Decompressed RGB mode.
+    rgb = 0 ## Decompressed RGB mode.
 
 
 const
-  Freenect2VideoFormatYuv* = Freenect2VideoFormat.rgb ## Decompressed YUV mode.
-  Freenect2VideoFormatRaw* = Freenect2VideoFormat.rgb ## Raw JPEG data mode.
+  Freenect2VideoFormatYuv* = Freenect2VideoFormat.rgb
+    ## Decompressed YUV mode.
+  Freenect2VideoFormatRaw* = Freenect2VideoFormat.rgb
+    ## Raw JPEG data mode.
 
 
 type
-  Freenect2IrFormat* {.pure, size: sizeof(cint).} = enum ## \
+  Freenect2IrFormat* {.pure, size: sizeof(cint).} = enum
     ## Enumeration of ir frame formats.
     raw = 5 ## Raw infrared data.
 
 
-  Freenect2DepthFormat* {.pure, size: sizeof(cint).} = enum ## \
+  Freenect2DepthFormat* {.pure, size: sizeof(cint).} = enum
     ## Enumeration of depth frame formats
-    mm = 5  ## depth to each pixel in mm, but left unaligned to RGB image.
+    mm = 5 ## depth to each pixel in mm, but left unaligned to RGB image.
 
 
-  Freenect2Flag* {.pure, size: sizeof(cint).} = enum ## \
+  Freenect2Flag* {.pure, size: sizeof(cint).} = enum
     ## Enumeration of flags to toggle features with freenect2SetFlag.
     mirrorDepth = 1 shl 16,
     mirrorVideo = 1 shl 17
 
 
-  Freenect2FlagValue* {.pure, size: sizeof(cint).} = enum ## \
+  Freenect2FlagValue* {.pure, size: sizeof(cint).} = enum
     ## Possible values for setting each `Freenect2Flag <#Freenect2Flag>`_.
     off = 0,
     on = 1
@@ -82,49 +84,61 @@ type
     ## Structure to give information about the width, height, bitrate,
     ## framerate, and buffer size of a frame in a particular mode, as
     ## well as the total number of bytes needed to hold a single frame.
-    reserved*: cuint ## Unique ID used internally. The meaning of values may
-      ## change without notice. Don't touch or depend on the contents of this
-      ## field. We mean it.
-    resolution*: Freenect2Resolution ## Resolution that this object describes,
-      ## should you want to find it again with `freenect2Find*FrameMode()`.
-    format*: Freenect2FrameModeFormat ## Format data.
-    bytes*: cint ## Total buffer size in bytes to hold a single frame of data.
-      ## Should be equivalent to:
+    reserved*: cuint
+      ## Unique ID used internally. The meaning of values may change without
+      ## notice. Don't touch or depend on the contents of this field.
+    resolution*: Freenect2Resolution
+      ## Resolution that this object describes, should you want to find it again
+      ## with `freenect2Find*FrameMode()`.
+    format*: Freenect2FrameModeFormat
+      ## Format data.
+    bytes*: cint
+      ## Total buffer size in bytes to hold a single frame of data. Should be
+      ## equivalent to:
       ## `width * height * (data_bits_per_pixel+padding_bits_per_pixel) / 8`
-    width*: cshort ## Width of the frame, in pixels.
-    height*: cshort ## Height of the frame, in pixels.
-    dataBitsPerPixel*: cchar ## Number of bits of information needed for each
-      ## pixel.
-    paddingBitsPerPixel*: cchar ## Number of bits of padding for alignment used
-      ## for each pixel.
-    framerate*: cchar ## Approximate expected frame rate, in Hz.
-    isValid*: cchar ## If 0, this Freenect2FrameMode is invalid and does not
-      ## describe a supported mode.  Otherwise, the frame_mode is valid.
-
+    width*: cshort
+      ## Width of the frame, in pixels.
+    height*: cshort
+      ## Height of the frame, in pixels.
+    dataBitsPerPixel*: cchar
+      ## Number of bits of information needed for each pixel.
+    paddingBitsPerPixel*: cchar
+      ## Number of bits of padding for alignment used for each pixel.
+    framerate*: cchar
+     ## Approximate expected frame rate, in Hz.
+    isValid*: cchar
+      ## If 0, this Freenect2FrameMode is invalid and does not describe a
+      ## supported mode.  Otherwise, the frame_mode is valid.
 
   Freenect2Context* = object
     ## Holds information about the usb context.
 
-
   Freenect2Device* = object
     ## Holds device information.
-
 
   Freenect2UsbContext* = ptr
     ## Holds libusb-1.0 context.
 
 
 type
-  Freenect2Loglevel* {.pure, size: sizeof(cint).} = enum ## \
+  Freenect2Loglevel* {.pure, size: sizeof(cint).} = enum
     ## Enumeration of message logging levels.
-    fatal = 0,  ## Log for crashing/non-recoverable errors.
-    error, ## Log for major errors.
-    warning, ## Log for warning messages.
-    notice, ## Log for important messages.
-    info, ## Log for normal messages.
-    debug, ## Log for useful development messages.
-    spew, ## Log for slightly less useful messages.
-    flood ## Log EVERYTHING. May slow performance.
+    fatal = 0,
+      ## Log for crashing/non-recoverable errors.
+    error,
+      ## Log for major errors.
+    warning,
+      ## Log for warning messages.
+    notice,
+      ## Log for important messages.
+    info,
+      ## Log for normal messages.
+    debug,
+      ## Log for useful development messages.
+    spew,
+      ## Log for slightly less useful messages.
+    flood
+      ## Log EVERYTHING. May slow performance.
 
 
 proc freenect2Init*(ctx: ptr ptr Freenect2Context;
